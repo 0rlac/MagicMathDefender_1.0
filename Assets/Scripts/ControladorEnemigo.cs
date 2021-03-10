@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class ControladorEnemigo : MonoBehaviour, IDaño
 {
-    public Transform target=null ;
+    Transform target=null ;
 
     public float distanciaDeDisparo = 10f;
     public float intervaloDeDisparo = 2f;
@@ -15,14 +15,22 @@ public class ControladorEnemigo : MonoBehaviour, IDaño
     public GameObject bala;
     public int vida = 100;
     NavMeshAgent agent;
+
+    private bool estoyAtacando;
+    private Animator anime;
+    public float distanciadedisparo=3f;
+    public float interbalodistanciadisparo = 2f;
+    float tiempodisparo;
     void Awake()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
     void Start()
     {
+        anime = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         timpoDeDisparo = intervaloDeDisparo;
+        tiempodisparo = interbalodistanciadisparo;
     }
     public bool dañohecho(int valor)
     {
@@ -50,7 +58,7 @@ public class ControladorEnemigo : MonoBehaviour, IDaño
         transform.LookAt(posMirar);
 
         distanciaDelObjetivo = Vector3.Distance(transform.position, target.position);
-        agent.SetDestination(target.position);
+        Seguiroprarar();
         controladorDeDisparo();
     }
     void controladorDeDisparo()
@@ -60,10 +68,24 @@ public class ControladorEnemigo : MonoBehaviour, IDaño
         {
             if (distanciaDelObjetivo < distanciaDeDisparo)
             {
+                anime.SetTrigger("Ataco");
                 timpoDeDisparo = intervaloDeDisparo;
                 GameObject obj = Instantiate(bala);
                 obj.transform.position = poscicionPistola.position;
                 obj.transform.LookAt(target.position);
+            }
+        }
+    }
+    void Seguiroprarar()
+    {
+        tiempodisparo -= Time.deltaTime;
+        if (tiempodisparo<0)
+        {
+            if (distanciaDelObjetivo> distanciadedisparo)
+            {
+                agent.SetDestination(target.position);
+                agent.stoppingDistance = distanciadedisparo;
+                tiempodisparo = interbalodistanciadisparo;
             }
         }
     }

@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ControladorDeCanvas : MonoBehaviour
 {
-    public Text txtVida,txtMunicion;
+    public Text txtVida, txtMunicion;
+  
     public static ControladorDeCanvas instance;
     
     private void Awake()
@@ -19,6 +20,14 @@ public class ControladorDeCanvas : MonoBehaviour
     {
         txtMunicion.text = "Municion: " + valorMunicion.ToString();
     }
+    /*public void AñadirTextoCorrectas(int valorCorrectas)
+    {
+        txtCorrectas.text = "Correctas: " + valorCorrectas;
+    }
+    public void AñadirTextoIncorrectas(int valorIncorrectas)
+    {
+        txtIncorrectas.text = "Incorrectas: " + valorIncorrectas;
+    }*/
 }
 
     

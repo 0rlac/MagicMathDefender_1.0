@@ -8,13 +8,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static int Ganaste = -1;
-    public float t; 
+    public float t;
+    public int p;
 
     public Text txtPreguntas;
     public int preguntas;
     public GameObject contenedorPreguntas;
 
-    public float tiempo;
+    public static float tiempo;
     public Text txtTiempo;
     private void Start()
     {
@@ -44,17 +45,21 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Has Ganado");
             GameManager.Ganaste = 1;
-            if (PlayerPrefs.HasKey("Record")==true)
+            if (PlayerPrefs.HasKey("Record")==true && (PlayerPrefs.HasKey("RecordPuntaje") == true))
             {
                 t = PlayerPrefs.GetFloat("Record");
-                if (tiempo < t)
+                p = PlayerPrefs.GetInt("RecordPuntaje");
+                if ((ResponderPregunta.puntos >= p)) 
                 {
                     PlayerPrefs.SetFloat("Record", tiempo);
+                    PlayerPrefs.SetInt("RecordPuntaje", ResponderPregunta.puntos);
+
                 }
             }
             else
             {
                 PlayerPrefs.SetFloat("Record", tiempo);
+                PlayerPrefs.SetInt("RecordPuntaje", ResponderPregunta.puntos );
             }
             PlayerPrefs.Save();
         }
@@ -63,6 +68,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Has Perdido");
             GameManager.Ganaste = 0;
         }
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("Resultados");
+        Cursor.visible = true;
     }
 }

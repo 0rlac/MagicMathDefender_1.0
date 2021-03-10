@@ -15,6 +15,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Nivel_1.unity
     guid: bc8d3bd4a6692b64499ad56951dabe55
   - enabled: 1
-    path: Assets/Scenes/Puntaje.unity
-    guid: 43611639c00553b4daae06945b82cefc
+    path: Assets/Scenes/Nivel_2.unity
+    guid: 8fc7eeaaa31df6b4aa99e5fca4f43905
+  - enabled: 1
+    path: Assets/Scenes/Nivel_3.unity
+    guid: 7b848e6f312407943a35109fb548f530
+  - enabled: 1
+    path: Assets/Scenes/Nivel_4.unity
+    guid: d1fd33370aa46c74a8daa5d3caa4c41a
+  - enabled: 1
+    path: Assets/Scenes/Nivel_5.unity
+    guid: f1ea80d54c94f9c409820afc59a24735
+  - enabled: 1
+    path: Assets/Scenes/Nivel_6.unity
+    guid: 11877a7f99b018d43984e9e5a7c910b9
+  - enabled: 1
+    path: Assets/Scenes/Resultados.unity
+    guid: a7641385ba985934a9529b62dc312f27
   m_configObjects: {}

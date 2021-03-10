@@ -16,6 +16,7 @@ public class ActivadorPregunta : MonoBehaviour {
     void OnTriggerEnter(Collider col){
 		switch (col.gameObject.tag){
 		case "Player":
+				Cursor.visible = true;
 			Pregunta.SetActive (true);
 				Time.timeScale = 0.1f;
 			break;

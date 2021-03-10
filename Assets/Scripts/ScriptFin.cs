@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class ScriptFin : MonoBehaviour
 {
+    public static ScriptFin instance;
     public Text txtFin;
-    public Text txtRecord;
-    public Text txtTiempo;
+    public Text txtRecord, txtRecordPuntaje;
+    public Text txtTiempo , txtPuntaje;
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,28 +31,42 @@ public class ScriptFin : MonoBehaviour
         {
             txtFin.enabled = false;
         }
-        if (PlayerPrefs.HasKey("Record"))
+        record();
+        recordPuntaje();
+    }
+    
+
+        public void volverMenu()
+    {
+       
+        SceneManager.LoadScene("MenuPlay");
+        ResponderPregunta.puntos = 0;
+    }
+    void record()
+    {
+        if (PlayerPrefs.HasKey("Record") && PlayerPrefs.HasKey("RecordPuntaje"))
         {
             txtRecord.text = "RECORD: " + PlayerPrefs.GetFloat("Record").ToString("n2");
-            txtTiempo.text = "Tiempo Actual: "+GameManager.instance.tiempo.ToString("n2");
+            txtTiempo.text = "Tiempo Actual: " + GameManager.tiempo.ToString("n2");
         }
         else
         {
-            txtRecord.text = "RECORD: NO TIME"; 
+            txtRecord.text = "RECORD: NO TIME";
+
+        }
+    }
+    void recordPuntaje()
+    {
+        if (PlayerPrefs.HasKey("Record") && PlayerPrefs.HasKey("RecordPuntaje"))
+        {
+            txtRecordPuntaje.text = "RECORD PUNTAJE : " + PlayerPrefs.GetInt("RecordPuntaje").ToString();
+            txtPuntaje.text = "Puntaje Actual: " + ResponderPregunta.puntos.ToString();
+        }
+        else
+        {
+            txtRecordPuntaje.text = "RECORD PUNTAJE: NO ";
+
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void bottonVolverAJugar(int numero)
-    {
-        SceneManager.LoadScene("Nivel_" + numero);
-    }
-    public void volverMenu()
-    {
-        SceneManager.LoadScene("MenuPlay");
-    }
 }

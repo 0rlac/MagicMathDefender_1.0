@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class VidaJugador : MonoBehaviour,IDaño
 {
     public Transform target;
-    int vidaJugador=20;
+    int vidaJugador=100;
     public Text mostratVida;
 
     public GameObject EfectoDaño;
@@ -51,6 +51,13 @@ public class VidaJugador : MonoBehaviour,IDaño
         if (vidaJugador <=0)
         {
             GameManager.instance.FinDelJuego(false);
+        }
+    }
+    void musica()
+    {
+        if (vidaJugador>0)
+        {
+
         }
     }
 }

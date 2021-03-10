@@ -10,6 +10,7 @@ public class ResponderPregunta : MonoBehaviour {
 	public GameObject activadorPregunta;
 	public GameObject Pregunta;
 	public static int puntos;
+	public int multiplicadorPuntos;
 
 	void Start() {
 
@@ -18,20 +19,21 @@ public class ResponderPregunta : MonoBehaviour {
 	}
     public void Preguntas(){
 
-		puntos+=puntosPorRespuesta;
+		puntos=puntos + (puntosPorRespuesta * multiplicadorPuntos);
 		StartCoroutine (res_correcta ());
 	}
 
 	IEnumerator res_correcta(){
 		
 		gameObject.GetComponent<AudioSource> ().Play();
-		canva_puntos.text = "puntos: " + puntos;
+		canva_puntos.text = "Puntos: " + puntos;
 		yield return new WaitForSeconds (0.5f);
-		canva_puntos.text = "puntos: " + puntos;
+		canva_puntos.text = "Puntos: " + puntos;
 		//activadorPregunta.GetComponent<Collider> ().enabled = false;
 	}
 	public void Despausear()
 	{
+		
 		Destroy(Pregunta);
 		Destroy(activadorPregunta);
 		GameManager.instance.PreguntasRespondidas();

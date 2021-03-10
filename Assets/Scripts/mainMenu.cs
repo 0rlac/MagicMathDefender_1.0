@@ -21,4 +21,8 @@ public class mainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("MenuPlay");
     }
+    public void CerrarJuego()
+    {
+        Application.Quit();
+    }
 }
