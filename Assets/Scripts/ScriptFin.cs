@@ -15,8 +15,11 @@ public class ScriptFin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         if (GameManager.Ganaste==0)
         {
+
             txtFin.text = "Has Perdido";
             txtFin.color = Color.red;
             txtFin.enabled = true;

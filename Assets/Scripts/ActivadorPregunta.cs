@@ -17,7 +17,8 @@ public class ActivadorPregunta : MonoBehaviour {
 		switch (col.gameObject.tag){
 		case "Player":
 				Cursor.visible = true;
-			Pregunta.SetActive (true);
+				//Cursor.lockState = CursorLockMode.None;
+				Pregunta.SetActive (true);
 				Time.timeScale = 0.1f;
 			break;
 		}

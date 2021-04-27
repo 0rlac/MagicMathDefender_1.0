@@ -11,11 +11,13 @@ public class Correctas_Incorrectas : MonoBehaviour
     public void Correctas()
     {
         contadorCorrectas += 1;
-        
+        Cursor.visible = false;
+       // Cursor.lockState = CursorLockMode.Locked;
     }
     public void Incorrectas()
     {
         contadorIncorrectas += 1;
-
+        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 }
